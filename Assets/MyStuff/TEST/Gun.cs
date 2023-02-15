@@ -39,7 +39,7 @@ public class Gun : MonoBehaviour
                 laserLine.SetPosition(1, hit.point);
                 if(hit.transform.gameObject.tag == "Target")
                 {
-                    Destroy(hit.transform.gameObject);
+                    hit.transform.gameObject.GetComponent<TargetTrigger>().TargetHit();
                 }
                 //Destroy(hit.transform.gameObject);
             }
