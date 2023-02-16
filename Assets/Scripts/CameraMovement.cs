@@ -15,20 +15,19 @@ public class CameraMovement : MonoBehaviour
 
     [SerializeField] private Slider _slider;
 
-    static float mouseSensitivityStatic = 500;
 
     private void Start()
     {
         _slider.GetComponent<Slider>();
-        mouseSensitivity = mouseSensitivityStatic;
-        _slider.value = mouseSensitivityStatic;
+        mouseSensitivity = PlayerPrefs.GetFloat("MouseSensitivity", 500);
+        _slider.value = PlayerPrefs.GetFloat("MouseSensitivity", 500);
     }
 
     public void SetMouseSensitivity()
     {
-        
+        PlayerPrefs.SetFloat("MouseSensitivity", _slider.value);
+        PlayerPrefs.Save();
         mouseSensitivity = _slider.value;
-        mouseSensitivityStatic = _slider.value;
     }
 
     void Update()

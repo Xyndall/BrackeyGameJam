@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject Timer;
 
+    public AudioSource MusicASource;
+
     private void Start()
     {
         Time.timeScale = 1;
@@ -62,6 +64,7 @@ public class GameManager : MonoBehaviour
     public void ResumeGame()
     {
         isPaused = false;
+        MusicASource.Play();
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
         PauseCanvas.SetActive(false);
@@ -70,6 +73,7 @@ public class GameManager : MonoBehaviour
     public void PauseGame()
     {
         isPaused = true;
+        MusicASource.Pause();
         Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.None;
         PauseCanvas.SetActive(true);

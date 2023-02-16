@@ -28,4 +28,6 @@ public class LoadSceneamager : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+
+
 }

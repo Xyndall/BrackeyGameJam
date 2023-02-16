@@ -15,12 +15,15 @@ public class RaycastForward : MonoBehaviour
 
     [SerializeField] Transform raycastTarget;
     [SerializeField] GameObject interactText;
+    [SerializeField] GameObject winText;
 
     public float hitDistance = 2;
 
     public bool hittingObject;
+    public bool hittingWin;
     public bool HoldingTarget = false;
     public LayerMask interactableObjects;
+    public LayerMask WinObjects;
 
     GameObject targetInteractable;
 
@@ -55,6 +58,18 @@ public class RaycastForward : MonoBehaviour
             
         }
 
+        if (Physics.Raycast(transform.position, fwd, out hit, hitDistance, WinObjects))
+        {
+            hittingWin = true;
+            winText.SetActive(true);
+
+        }
+        else
+        {
+            hittingWin = false;
+            winText.SetActive(false);
+        }
+
         Debug.DrawLine(transform.position, transform.position + fwd * hitDistance, Color.yellow);
 
     }
@@ -84,6 +99,14 @@ public class RaycastForward : MonoBehaviour
             }
             
 
+        }
+
+        if (hittingWin)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                GameManager.instance.Win();
+            }
         }
 
     }

@@ -14,15 +14,18 @@ public class CountdownTimer : MonoBehaviour
     }
     #endregion
 
+    public AudioSource aSource;
+    [SerializeField] AudioClip aClip;
 
     public float TimeLeft;
     public bool TimerOn = false;
 
     public TextMeshProUGUI TimerTxt;
-
+    bool audioPllaying;
     void Start()
     {
         TimerOn = true;
+        aSource.GetComponent<AudioSource>();
     }
 
     void Update()
@@ -40,6 +43,12 @@ public class CountdownTimer : MonoBehaviour
                 TimeLeft = 0;
                 TimerOn = false;
             }
+        }
+
+        if(TimeLeft <= 6 && !audioPllaying )
+        {
+            audioPllaying = true;
+            aSource.PlayOneShot(aClip);
         }
     }
 
