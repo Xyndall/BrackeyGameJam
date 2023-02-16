@@ -6,11 +6,15 @@ public class PickupGun : MonoBehaviour
 {
 
     public GameObject PlayerGun;
+    public GameObject TeleportGun;
+
 
     // Start is called before the first frame update
     void Start()
     {
         PlayerGun.SetActive(false);   
+        TeleportGun.SetActive(false);   
+
     }
 
 
@@ -21,6 +25,13 @@ public class PickupGun : MonoBehaviour
             Debug.Log("Gun Picked Up");
             Destroy(other.gameObject);
             PlayerGun.SetActive(true);
+        }
+
+        if (other.CompareTag("TeleportGun"))
+        {
+            Debug.Log("Gun Picked Up");
+            Destroy(other.gameObject);
+            TeleportGun.SetActive(true);
         }
     }
 

@@ -6,6 +6,9 @@ TagManager:
   tags:
   - OBJ
   - Target
+  - GunPickUp
+  - Win
+  - TeleportGun
   layers:
   - Default
   - TransparentFX
